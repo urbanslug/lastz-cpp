@@ -21,7 +21,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_subdirectory(src/lastz EXCLUDE_FROM_ALL)
 
 add_executable(lastz-cpp
-  src/main.cpp) #$(CXX) $(CXXFLAGS) $(CPPFLAGS) -Lsrc/lastz/build/lib $(SOURCE_1) -o mashz @mathlib@ -lstdc++ -lz -lm -llastz
+  src/main.cpp) #$(CXX) $(CXXFLAGS) $(CPPFLAGS) -Lsrc/lastz/build/lib $(SOURCE_1) -o mashz -llastz
 
 target_include_directories(lastz-cpp PRIVATE
   src/lastz)
