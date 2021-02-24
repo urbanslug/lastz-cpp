@@ -13,7 +13,15 @@ int main() {
   free(s1);
 
 
-  char** s2 = do_stream();
+  char* s2 = do_stream();
 
-  //printf("%s", res);
+  std::string s;
+  for(; *s2 ; *s2++) {
+    s.push_back(*s2);
+  }
+
+  free(s2);
+
+
+  std::cout << s << std::endl;
 }

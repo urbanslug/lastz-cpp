@@ -21,7 +21,7 @@ char** use_char(char** mystr) {
 }
 
 
-char** do_stream() {
+char* do_stream() {
   char   *ptr; // = NULL;
   size_t len;  // = 0;
   FILE   *f = open_memstream(&ptr, &len);
@@ -32,14 +32,14 @@ char** do_stream() {
 
   printf("%d\n", (int) len); // size of f
 
-  char** out = malloc((int) len * sizeof(char));
+  char* out = malloc(((int) len * sizeof(char))+sizeof(char));
 
   size_t counter = 0;
   for(; *ptr; ptr++, counter++) {
-    printf("%c", *ptr);
-    out[counter] = ptr;
+    out[counter] = *ptr;
   }
-  // out[counter] = '\0';
+  char null_terminator = '\0';
+  out[counter] = &null_terminator;
 
   return out;
 }

@@ -2,6 +2,6 @@
 #define SOMECODE_H_
 
 char** use_char(char** my);
-char** do_stream();
+char* do_stream();
 
 #endif
