@@ -5,14 +5,9 @@ extern "C" {
   #include "lastz/src/lastz.h"
 }
 
-/*
-  First argument is the target, second is the query
- */
 
+// First argument is the target, second is the query
 int main(int argc, char *argv[]) {
-  size_t paf_len = 20000;
-  char **s2 = (char**)malloc(paf_len*sizeof(char));
-
   char* target = argv[1];
   char* query = argv[2];
   char* program_name = "";
@@ -25,15 +20,12 @@ int main(int argc, char *argv[]) {
     format,       // 3 output format
   };
 
-  std::cerr << "[lastz::align::computeAlignments] "
-            << "Performing lastz alignment "
-            << std::endl;
+  size_t paf_len = 20000;
+  char **s2 = (char**)malloc(paf_len*sizeof(char));
 
+  std::cerr << "[lastz::align::computeAlignments] Performing lastz alignment " << std::endl;
   lastz(s2, 4, lastz_call);
-
-  std::cerr << "[lastz::align::computeAlignments] "
-            << "Finished performing lastz alignment"
-            << std::endl;
+  std::cerr << "[lastz::align::computeAlignments] Finished performing lastz alignment" << std::endl;
 
   std::string s;
   for(int counter = 0; *s2 ; s2++, counter++) {
