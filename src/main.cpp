@@ -10,12 +10,6 @@ extern "C" {
  */
 
 int main(int argc, char *argv[]) {
-  /*
-    for(int i = 1; i < argc; i++) {
-    std::cout << argv[i] << std::endl;
-    }
-   */
-
   size_t paf_len = 20000;
   char **s2 = (char**)malloc(paf_len*sizeof(char));
 
@@ -25,10 +19,10 @@ int main(int argc, char *argv[]) {
   char* format = "--format=paf:wfmash";
 
   char* lastz_call[] = {
-    program_name,               // 0 can be an empty string no real need for this
-    target,                // 1 the filename of the reference file
-    query,                 // 2 the filename of the query file
-    format, // 3 output format
+    program_name, // 0 can be an empty string no real need for this
+    target,       // 1 the filename of the reference file
+    query,        // 2 the filename of the query file
+    format,       // 3 output format
   };
 
   std::cerr << "[lastz::align::computeAlignments] "
@@ -43,11 +37,13 @@ int main(int argc, char *argv[]) {
 
   std::string s;
   for(int counter = 0; *s2 ; s2++, counter++) {
-    std::cout << counter << " ";
+    //std::cout << counter << " ";
     s.push_back(**s2);
   }
 
   free(s2);
+
+  // std::cout << s;
 
   std::cout << s << "\n";
 }

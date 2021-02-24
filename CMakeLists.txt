@@ -11,23 +11,22 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -mcx16 -march=native -g -fpermissive")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -mcx16 -march=native -g -fpermissive")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -mcx16 -march=native -g -fpermissive -fsanitize=address")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -mcx16 -march=native -g -fpermissive -fsanitize=address")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-
 add_subdirectory(src/lastz EXCLUDE_FROM_ALL)
 
-add_executable(mashz
+add_executable(lastz-cpp
   src/main.cpp) #$(CXX) $(CXXFLAGS) $(CPPFLAGS) -Lsrc/lastz/build/lib $(SOURCE_1) -o mashz @mathlib@ -lstdc++ -lz -lm -llastz
 
-target_include_directories(mashz PRIVATE
+target_include_directories(lastz-cpp PRIVATE
   src/lastz)
 
-target_link_libraries(mashz
+target_link_libraries(lastz-cpp
   lastz)
 
-install(TARGETS mashz DESTINATION bin)
+install(TARGETS lastz-cpp DESTINATION bin)
