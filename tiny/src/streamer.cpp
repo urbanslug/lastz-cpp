@@ -12,14 +12,8 @@ int main() {
 
   free(s1);
 
-  std::stringstream s;
-  //do_stream(&s);
 
-  /*
-  for(size_t i = 0; i < 20; i++)
-    printf("%c", s2[i]);
-  printf("\n");
-  */
+  char** s2 = do_stream();
 
-
+  //printf("%s", res);
 }

@@ -6,12 +6,12 @@ CXXFLAGS=-c -Wall -fsanitize=address
 ASAN_FLAGS =-fsanitize=address -fno-omit-frame-pointer -Wno-format-security
 SOURCE_FILES=src/streams.c src/streams.h src/streamer.cpp
 
-all: tiny
+all: smol
 
-tiny: $(SOURCR_FILES)
+smol: $(SOURCR_FILES)
 	$(CC)  $(CFLAGS) $(ASAN_FLAGS) -o streams.o src/streams.c
 	$(CXX) $(CXXFLAGS) $(ASAN_FLAGS) -o streamer.o src/streamer.cpp
-	$(CXX) $(ASAN_FLAGS) -o tiny streams.o streamer.o
+	$(CXX) $(ASAN_FLAGS) -o smol streams.o streamer.o
 
 clean:
-	rm -f *.o tiny
+	rm -f *.o smol
