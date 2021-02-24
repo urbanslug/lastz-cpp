@@ -2016,9 +2016,8 @@ show_stats_and_clean_up:
 	if (dbgReportFinish)
 		fprintf (stderr, "lastz has finished successfully\n");
 
-  size_t counter;
   size_t maxx = (size_t)output_len;
-  for(counter = 0; counter < maxx; ptr++, counter++) {
+  for(size_t counter = 0; counter < maxx; ptr++, counter++) {
     outArray[counter] = ptr;
   }
   outArray[maxx] = '\0';

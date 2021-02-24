@@ -28,14 +28,11 @@ int main(int argc, char *argv[]) {
   std::cerr << "[lastz::align::computeAlignments] Finished performing lastz alignment" << std::endl;
 
   std::string s;
-  for(int counter = 0; *s2 ; s2++, counter++) {
-    //std::cout << counter << " ";
+  for(int counter = 0; *(*s2) ; (*s2)++, counter++) {
     s.push_back(**s2);
   }
 
   free(s2);
-
-  // std::cout << s;
 
   std::cout << s << "\n";
 }
