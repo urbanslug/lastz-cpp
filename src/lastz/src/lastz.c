@@ -568,8 +568,7 @@ exparg expanders[] =
 //
 //----------
 
-char** lastz (char
-              ** outArray, int argc, char** argv);
+char* lastz (int argc, char** argv);
 
 static int       report_progress         (seq* target, seq* query,
                                           int applyChore, int numQueries, int numChores,
@@ -634,9 +633,8 @@ static void      lastz_show_stats        (FILE* f);
 
 //=== the actual function main() ===
 
-char** lastz
-(char** outArray,
- int				argc,
+char* lastz
+(int				argc,
 	char**			argv)
 	{
 	FILE*			statsF        = NULL;
@@ -2016,11 +2014,13 @@ show_stats_and_clean_up:
 	if (dbgReportFinish)
 		fprintf (stderr, "lastz has finished successfully\n");
 
-  size_t maxx = (size_t)output_len;
-  for(size_t counter = 0; counter < maxx; ptr++, counter++) {
-    outArray[counter] = ptr;
+
+  char* outArray = malloc(((int) output_len * sizeof(char))+sizeof(char));
+  size_t counter = 0;
+  for(; *ptr; ptr++, counter++) {
+    outArray[counter] = *ptr;
   }
-  outArray[maxx] = '\0';
+  outArray[counter] = '\0';
 
 
 	return outArray;

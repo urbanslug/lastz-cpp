@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 
 extern "C" {
   #include "lastz/src/lastz.h"
@@ -20,19 +21,12 @@ int main(int argc, char *argv[]) {
     format,       // 3 output format
   };
 
-  size_t paf_len = 20000;
-  char **s2 = (char**)malloc(paf_len*sizeof(char));
-
   std::cerr << "[lastz::align::computeAlignments] Performing lastz alignment " << std::endl;
-  lastz(s2, 4, lastz_call);
+  char* s2 = lastz(4, lastz_call);
   std::cerr << "[lastz::align::computeAlignments] Finished performing lastz alignment" << std::endl;
 
-  std::string s;
-  for(int counter = 0; *(*s2) ; (*s2)++, counter++) {
-    s.push_back(**s2);
-  }
-
+  std::string s(s2);
   free(s2);
 
-  std::cout << s << "\n";
+  std::cout << s << std::endl;;
 }

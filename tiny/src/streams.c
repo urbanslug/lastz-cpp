@@ -38,8 +38,7 @@ char* do_stream() {
   for(; *ptr; ptr++, counter++) {
     out[counter] = *ptr;
   }
-  char null_terminator = '\0';
-  out[counter] = &null_terminator;
+  out[counter] = '\0';
 
   return out;
 }

@@ -12,16 +12,10 @@ int main() {
 
   free(s1);
 
-
   char* s2 = do_stream();
 
-  std::string s;
-  for(; *s2 ; *s2++) {
-    s.push_back(*s2);
-  }
+  std::string s(s2);
 
   free(s2);
-
-
   std::cout << s << std::endl;
 }
